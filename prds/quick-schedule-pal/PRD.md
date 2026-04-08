@@ -1,58 +1,65 @@
 # PRD: Quick Schedule Pal
 
-Version: 1.0 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
+Version: 1.1 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
 
 ## 1. Introduction
 
-Quick Schedule Pal is an appointment scheduling tool designed for financial advisors. It streamlines the process of booking client meetings, managing availability, and reducing scheduling friction -- enabling advisors to spend more time in client conversations and less on logistics.
+Quick Schedule Pal is a coaching session booking tool with Google Calendar integration for financial advisors. It uses Lovable Cloud OAuth authentication and includes a self-improving AI system (swarm pipeline with 15-minute improvement cycles) to optimize scheduling. The app tracks client availability and streamlines the booking process.
 
 ## 2. Goals
 
 | ID | Goal | Success Metric |
 |----|------|---------------|
-| G-01 | Reduce scheduling back-and-forth | Average booking takes under 2 minutes |
-| G-02 | Increase client meeting volume | 20% more meetings booked per advisor per month |
-| G-03 | Prevent double-booking and conflicts | Zero scheduling conflicts reported |
+| G-01 | Reduce scheduling back-and-forth via Google Calendar sync | Average booking takes under 2 minutes |
+| G-02 | Increase coaching session volume | 20% more sessions booked per advisor per month |
+| G-03 | Prevent double-booking through calendar integration | Zero scheduling conflicts reported |
+| G-04 | Continuously improve scheduling UX via AI swarm pipeline | Measurable UX improvement every 15-minute cycle |
 
 ## 3. User Roles
 
 | Role | Description |
 |------|------------|
-| Advisor | Sets availability, shares booking links, manages appointments |
-| Client / Prospect | Books available time slots via shared link |
-| Admin | Manages team-wide scheduling rules and defaults |
+| Coach/Advisor | Sets availability, shares booking links, manages coaching sessions |
+| Client/Coachee | Books available coaching time slots via shared link |
 
-## 4. User Stories
+## 4. Core Features
 
-| ID | Story | Acceptance Criteria |
-|----|-------|-------------------|
-| US-01 | As an advisor, I want to set my available time slots so clients can self-book | Availability editor with recurring and one-off slot support |
-| US-02 | As a client, I want to book an appointment from a shared link so I can schedule without calling | Booking page shows available slots; confirmation sent on booking |
-| US-03 | As an advisor, I want to see my upcoming appointments in one view so I can plan my day | Calendar view with appointment details, client info, and meeting type |
+| Feature | Description |
+|---------|------------|
+| Google Calendar Integration | Two-way sync for availability and bookings |
+| Lovable Cloud OAuth | Authentication via Lovable Cloud |
+| Self-Improving AI System | Swarm pipeline on 15-minute cycles that optimizes scheduling logic |
+| Client Availability Tracking | Track when clients are available for coaching sessions |
+| Booking Links | Shareable links for self-service session booking |
+| Session Management | Calendar views with appointment details and client info |
 
-## 5. Functional Requirements
-
-| ID | Requirement |
-|----|------------|
-| FR-01 | Availability management with recurring schedules |
-| FR-02 | Shareable booking links per advisor |
-| FR-03 | Appointment calendar with day/week/month views |
-| FR-04 | Booking confirmation and reminder notifications |
-| FR-05 | Buffer time and meeting duration configuration |
-
-## 6. Non-Goals
-
-- CRM or lead management
-- Video conferencing integration
-- Payment collection for consultations
-
-## 7. Technical Considerations
+## 5. Technical Architecture
 
 | Aspect | Detail |
 |--------|--------|
 | Stack | React + TypeScript + Vite + Tailwind + shadcn/ui |
 | Backend | Supabase |
+| Calendar | Google Calendar API integration |
+| Auth | Lovable Cloud OAuth |
+| AI | Self-improving swarm pipeline (15-min cycle) |
 | Deployment | Vercel |
+
+## 6. Contributors
+
+| Contributor | Commits | Role |
+|------------|---------|------|
+| `lovable-dev[bot]` | ~89 | Primary AI builder |
+| `leotansingapore` | 7 | Owner, product direction |
+| `claude` | 7 | AI contributor |
+| `jiliangarette` | 6 | Developer |
+| Total | 109 | |
+
+## 7. Non-Goals
+
+- CRM or lead management
+- Video conferencing integration
+- Payment collection for consultations
+- Full team-wide scheduling (this is for 1:1 coaching sessions)
 
 ## 8. Success Metrics
 
@@ -60,19 +67,22 @@ Quick Schedule Pal is an appointment scheduling tool designed for financial advi
 |--------|--------|
 | Average booking time | Under 2 minutes |
 | Scheduling conflicts | Zero |
-| Advisor adoption | 80% of team |
+| Coach adoption | 80% of team |
+| AI improvement cycle uptime | 95%+ |
 
 ## 9. Current Status
 
 | Feature | Status |
 |---------|--------|
-| Availability management | MVP |
-| Booking links | MVP |
-| Appointment calendar | MVP |
-| Notifications | Planned |
+| Google Calendar integration | Production |
+| Lovable Cloud OAuth | Production |
+| Booking links | Production |
+| Client availability tracking | Production |
+| Self-improving AI system | MVP |
+| Session management | Production |
 
 ## 10. Open Questions
 
-1. Should the tool integrate with Google Calendar or Outlook?
-2. Is there a need for meeting type categories (e.g., initial consultation vs. review)?
-3. How will client data from bookings feed into other ecosystem apps?
+1. Should the self-improving AI system be expanded to other ecosystem apps?
+2. How will coaching session data feed into Activity Tracker for advisor development tracking?
+3. Is there a need for group session booking in addition to 1:1?

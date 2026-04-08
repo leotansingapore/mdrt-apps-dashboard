@@ -1,61 +1,72 @@
 # PRD: Tracker Attendance
 
-Version: 1.0 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
+Version: 1.1 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
 
 ## 1. Introduction
 
-Tracker Attendance is a training event attendance tracking and check-in system for the advisory team. It enables organizers to create training events, generate check-in mechanisms (QR codes or links), track real-time attendance, and report on participation rates for compliance and development tracking.
+Tracker Attendance is a full-featured attendance tracking and team management platform for Win Financial Group. It handles event attendance via QR code scanning and geolocation, leave request workflows, pet gamification, org chart visualization, analytics dashboards, and Lark webhook notifications. The app runs as a mobile app via Capacitor 7.4 (iOS/Android) and as a web app.
 
 ## 2. Goals
 
 | ID | Goal | Success Metric |
 |----|------|---------------|
-| G-01 | Replace manual attendance sheets with digital check-in | 100% of training events use digital check-in |
-| G-02 | Provide real-time attendance visibility to organizers | Attendance count updates within 5 seconds of check-in |
-| G-03 | Generate attendance reports for compliance | Reports exportable within 1 minute of event end |
+| G-01 | Replace manual attendance sheets with digital QR check-in | 100% of events use digital check-in |
+| G-02 | Provide real-time attendance visibility with geolocation | Attendance count updates within 5 seconds of check-in |
+| G-03 | Streamline leave request and approval workflows | Leave requests processed within 24 hours |
+| G-04 | Increase engagement through pet gamification | 70%+ of users interact with pet system weekly |
+| G-05 | Generate compliance reports for management | Reports exportable within 1 minute of event end |
 
 ## 3. User Roles
 
 | Role | Description |
 |------|------------|
-| Attendee | Checks in to training events via QR code or link |
-| Organizer | Creates events, monitors attendance, generates reports |
-| Admin | Manages event categories, compliance rules, user access |
+| Consultant | Checks in to events via QR code, manages leave requests, interacts with pet system |
+| Manager | Monitors team attendance, approves leave requests, views analytics |
+| Admin | Manages events, org chart, compliance rules, user access, system configuration |
 
-## 4. User Stories
+## 4. Core Features
 
-| ID | Story | Acceptance Criteria |
-|----|-------|-------------------|
-| US-01 | As an organizer, I want to create a training event so attendees can check in | Event created with title, date, time, location; unique check-in link/QR generated |
-| US-02 | As an attendee, I want to check in via QR code so my attendance is recorded instantly | Scan QR or tap link; confirmation shown; name appears on organizer's live list |
-| US-03 | As an organizer, I want to see real-time attendance so I know who has arrived | Live attendance dashboard with count, names, and check-in timestamps |
-| US-04 | As an organizer, I want to export an attendance report so I can submit it for compliance | Export to CSV/PDF with event details, attendee names, and timestamps |
+| Feature | Description |
+|---------|------------|
+| QR Code Check-in | Scan-based event check-in with confirmation |
+| Geolocation Tracking | Location verification during check-in |
+| Event Management | Create, edit, and manage training/meeting events |
+| Leave Request Workflow | Submit, approve, reject leave requests with audit trail |
+| Pet Gamification | Virtual pet system tied to attendance and engagement |
+| Org Chart | Visual team hierarchy and reporting structure |
+| Analytics Dashboards | Attendance rates, trends, team comparisons |
+| Lark Webhooks | Real-time notifications to Lark for check-ins and events |
+| Report Export | CSV/PDF attendance reports for compliance |
 
-## 5. Functional Requirements
-
-| ID | Requirement |
-|----|------------|
-| FR-01 | Event creation with date, time, location, and description |
-| FR-02 | QR code and shareable link generation per event |
-| FR-03 | Digital check-in with timestamp recording |
-| FR-04 | Real-time attendance dashboard for organizers |
-| FR-05 | Attendance report export (CSV, PDF) |
-| FR-06 | Historical attendance records per person and per event |
-
-## 6. Non-Goals
-
-- Training content delivery or LMS functionality
-- Activity tracking or gamification (handled by Activity Tracker)
-- Scheduling or calendar management (handled by Quick Schedule Pal)
-
-## 7. Technical Considerations
+## 5. Technical Architecture
 
 | Aspect | Detail |
 |--------|--------|
 | Stack | React + TypeScript + Vite + Tailwind + shadcn/ui |
-| Backend | Supabase |
-| QR Generation | Client-side QR library |
+| Backend | Supabase (project: eqgopcqmcjyqliwhmsbf) |
+| Edge Functions | 35+ Supabase Edge Functions |
+| Custom Hooks | 90+ React hooks |
+| Mobile | Capacitor 7.4 (iOS + Android) |
+| Testing | Playwright (E2E) + Vitest (unit) |
+| Notifications | Lark webhook integration |
 | Deployment | Vercel |
+
+## 6. Contributors
+
+| Contributor | Commits | Role |
+|------------|---------|------|
+| `lovable-dev[bot]` | ~6,627 | Primary AI builder |
+| `haroldcalayan` | 102 | Developer -- core features |
+| `jiliangarette` | 64 | Developer -- feature work |
+| `r123198` | 10 | Developer |
+| `avyldemesa` | 3 | Contributor |
+| Total | 6,803 | |
+
+## 7. Non-Goals
+
+- Training content delivery or LMS functionality
+- Activity tracking or gamification beyond attendance (handled by Activity Tracker)
+- Scheduling or calendar management (handled by Quick Schedule Pal)
 
 ## 8. Success Metrics
 
@@ -63,6 +74,7 @@ Tracker Attendance is a training event attendance tracking and check-in system f
 |--------|--------|
 | Digital check-in adoption | 100% of events |
 | Check-in to confirmation time | Under 5 seconds |
+| Leave request processing | Under 24 hours |
 | Report generation time | Under 1 minute |
 | Attendance data accuracy | 99%+ |
 
@@ -70,14 +82,19 @@ Tracker Attendance is a training event attendance tracking and check-in system f
 
 | Feature | Status |
 |---------|--------|
-| Event creation | MVP |
-| QR code check-in | MVP |
-| Live attendance dashboard | MVP |
-| Report export | Planned |
-| Historical records | Planned |
+| QR code check-in | Production |
+| Geolocation tracking | Production |
+| Event management | Production |
+| Leave request workflow | Production |
+| Pet gamification | Production |
+| Org chart | Production |
+| Analytics dashboards | Production |
+| Lark webhooks | Production |
+| Report export | Production |
+| Capacitor mobile app | Production |
 
 ## 10. Open Questions
 
-1. Should attendance data integrate with Activity Tracker for CPD (Continuing Professional Development) credits?
-2. Is there a need for late check-in or absence justification workflows?
-3. How will attendance data be used for compliance reporting to AIA or MAS?
+1. Should attendance data integrate with Activity Tracker for CPD credits?
+2. How will attendance data be used for compliance reporting to AIA or MAS?
+3. Plans for offline check-in support when connectivity is poor?

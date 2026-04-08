@@ -1,82 +1,97 @@
-# PRD: Agency Launchpad 90
+# PRD: Agency Launchpad 90 (AdBlueprint)
 
-Version: 1.0 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
+Version: 1.1 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
 
 ## 1. Introduction
 
-Agency Launchpad 90 is a 90-day agency building and launch program management tool. It guides new agency leaders through a structured onboarding plan with milestones, task checklists, and progress tracking designed to accelerate time-to-productivity for newly promoted or recruited agency leaders.
+Agency Launchpad 90, internally known as **AdBlueprint**, is a Meta ads management platform. It integrates with the Meta Marketing API v21.0 to enable campaign creation and management across Facebook and Instagram, client account management (multi-tenant), lead generation tools, and ad analytics/reporting. **CRITICAL: This app connects to real ad accounts with real billing -- never activate or unpause campaigns without explicit approval.**
 
 ## 2. Goals
 
 | ID | Goal | Success Metric |
 |----|------|---------------|
-| G-01 | Structure the first 90 days for new agency leaders | 100% of new leaders enrolled in a 90-day plan |
-| G-02 | Increase agency leader retention through structured support | 90-day retention rate above 85% |
-| G-03 | Track milestone completion to identify at-risk leaders early | At-risk leaders flagged by day 30 |
+| G-01 | Centralize Meta ad campaign management for advisory teams | All campaigns managed through AdBlueprint |
+| G-02 | Simplify multi-client ad account management | Advisors manage 5+ client accounts from one dashboard |
+| G-03 | Provide actionable ad performance analytics | Key metrics visible within 10 seconds of dashboard load |
+| G-04 | Generate leads through Meta ad campaigns | Lead cost tracked and optimized per campaign |
 
 ## 3. User Roles
 
 | Role | Description |
 |------|------------|
-| New Agency Leader | Follows the 90-day plan, completes milestones and tasks |
-| Mentor / Senior Leader | Monitors progress, provides coaching, reviews milestones |
-| Admin | Configures 90-day plan templates and milestone definitions |
+| Ad Manager | Creates and manages campaigns, monitors performance |
+| Client Account Owner | Views their own campaign performance and leads |
+| Admin | Manages client accounts, billing connections, safety settings |
 
-## 4. User Stories
+## 4. Core Features
 
-| ID | Story | Acceptance Criteria |
-|----|-------|-------------------|
-| US-01 | As a new leader, I want to see my 90-day plan so I know exactly what to do each week | Plan view shows weekly tasks, milestones, and deadlines |
-| US-02 | As a mentor, I want to see which milestones my mentees have completed so I can coach proactively | Mentor dashboard shows per-mentee progress with overdue flags |
-| US-03 | As a new leader, I want to check off completed tasks so my progress is tracked | Task completion updates progress bar and notifies mentor |
-| US-04 | As an admin, I want to create plan templates so new leaders get a consistent onboarding experience | Template editor with week-by-week task and milestone configuration |
+| Feature | Description |
+|---------|------------|
+| Meta Marketing API v21.0 | Full integration for campaign CRUD operations |
+| Campaign Management | Create, edit, pause campaigns for Facebook and Instagram |
+| Multi-Tenant Clients | Manage multiple client ad accounts from one interface |
+| Lead Generation | Lead forms, tracking, and qualification tools |
+| Ad Analytics | Performance reporting with spend, reach, conversions, ROAS |
+| Safety Controls | Guards against accidental campaign activation/spend |
+| Framer Motion | Polished animations and transitions throughout the UI |
 
-## 5. Functional Requirements
+## 5. Safety Documentation
 
-| ID | Requirement |
-|----|------------|
-| FR-01 | 90-day plan with weekly breakdown (Weeks 1-4, 5-8, 9-12) |
-| FR-02 | Milestone definitions with completion criteria |
-| FR-03 | Task checklists per week with check-off tracking |
-| FR-04 | Mentor dashboard with multi-mentee progress view |
-| FR-05 | At-risk flagging when milestones are overdue |
-| FR-06 | Plan template management for admins |
+| Rule | Detail |
+|------|--------|
+| Never auto-activate campaigns | All campaign activations require manual confirmation |
+| Real billing connected | Ad accounts have real payment methods -- treat as production |
+| Budget safeguards | Maximum daily budget limits enforced at app level |
+| Pause-only defaults | New campaigns default to paused state |
 
-## 6. Non-Goals
-
-- Ongoing performance tracking beyond 90 days (handled by Agent Rank Dash)
-- Activity logging or gamification (handled by Activity Tracker)
-- Financial planning tools
-
-## 7. Technical Considerations
+## 6. Technical Architecture
 
 | Aspect | Detail |
 |--------|--------|
 | Stack | React + TypeScript + Vite + Tailwind + shadcn/ui |
 | Backend | Supabase |
+| API | Meta Marketing API v21.0 |
+| Animations | Framer Motion |
 | Deployment | Vercel |
 
-## 8. Success Metrics
+## 7. Contributors
+
+| Contributor | Commits | Role |
+|------------|---------|------|
+| `lovable-dev[bot]` | ~15 | AI builder |
+| `jiliangarette` | 756 | **Main developer** -- built the vast majority of the app |
+| `leotansingapore` | 20 | Owner, product direction |
+| Total | 791 | |
+
+## 8. Non-Goals
+
+- Google Ads management (separate tooling)
+- Organic social media management
+- CRM or full lead pipeline management (handled by lead-scraper)
+
+## 9. Success Metrics
 
 | Metric | Target |
 |--------|--------|
-| Plan enrollment rate | 100% of new leaders |
-| 90-day milestone completion | 80%+ |
-| 90-day retention | 85%+ |
-| Mentor check-in frequency | Weekly |
+| Campaign creation time | Under 5 minutes |
+| Dashboard load time | Under 10 seconds |
+| Client account onboarding | Under 15 minutes |
+| Zero accidental campaign activations | 0 incidents |
 
-## 9. Current Status
+## 10. Current Status
 
 | Feature | Status |
 |---------|--------|
-| 90-day plan view | MVP |
-| Task checklists | MVP |
-| Milestone tracking | MVP |
-| Mentor dashboard | Planned |
-| Plan templates | Planned |
+| Meta API integration | Production |
+| Campaign management | Production |
+| Multi-tenant clients | Production |
+| Lead generation tools | Production |
+| Ad analytics | Production |
+| Safety controls | Production |
+| Framer Motion UI | Production |
 
-## 10. Open Questions
+## 11. Open Questions
 
-1. Should the 90-day plan be customizable per agency or standardized across all?
-2. How will completion data feed into Agent Rank Dash for long-term tracking?
-3. Is there a need for automated reminders or nudges for overdue tasks?
+1. Should the platform expand to support Google Ads alongside Meta?
+2. How will lead data from Meta campaigns feed into other ecosystem apps?
+3. What is the escalation path if a campaign is accidentally activated?

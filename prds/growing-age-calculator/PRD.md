@@ -1,57 +1,65 @@
 # PRD: Growing Age Calculator
 
-Version: 1.0 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
+Version: 1.1 | Date: 2026-04-08 | Status: Active | Owner: Leo Tan
 
 ## 1. Introduction
 
-Growing Age Calculator is an age-based financial planning calculator that helps financial advisors illustrate how a client's financial needs, insurance coverage gaps, and investment horizons change across life stages. It provides visual timelines tied to Singapore milestones such as CPF withdrawal ages, retirement thresholds, and insurance coverage limits.
+Growing Age Calculator is an age-based financial planning calculator with VitalHealth plan features. It helps financial advisors illustrate how a client's financial needs, insurance coverage gaps, and investment horizons change across life stages. It features dark mode support and responsive design. With 7,817 commits, it has the highest commit count of any app in the ecosystem.
 
 ## 2. Goals
 
 | ID | Goal | Success Metric |
 |----|------|---------------|
 | G-01 | Visualize financial milestones by age for clients | Advisors use the tool in 50%+ of client presentations |
-| G-02 | Identify coverage gaps at each life stage | Tool flags gaps for 100% of incomplete profiles |
-| G-03 | Simplify complex age-based financial concepts | Client comprehension rating above 4/5 |
+| G-02 | Showcase VitalHealth plan features clearly | Clients understand VitalHealth benefits after one session |
+| G-03 | Identify coverage gaps at each life stage | Tool flags gaps for 100% of incomplete profiles |
+| G-04 | Simplify complex age-based financial concepts | Client comprehension rating above 4/5 |
 
 ## 3. User Roles
 
 | Role | Description |
 |------|------------|
-| Advisor | Inputs client age and profile; presents age-based projections |
+| Advisor | Inputs client age and profile; presents age-based projections and VitalHealth features |
 | Client (view-only) | Views personalized age-based financial timeline |
 
-## 4. User Stories
+## 4. Core Features
 
-| ID | Story | Acceptance Criteria |
-|----|-------|-------------------|
-| US-01 | As an advisor, I want to input a client's age and profile so I can show their financial timeline | Form accepts age, income, dependents; timeline renders immediately |
-| US-02 | As an advisor, I want to highlight key age milestones so the client understands critical deadlines | Timeline marks CPF withdrawal ages, retirement age, insurance expiry |
-| US-03 | As a client, I want to see a visual timeline of my financial journey so I can understand my plan | Clear, readable chart showing milestones from current age to retirement |
+| Feature | Description |
+|---------|------------|
+| Age-Based Timeline | Visual financial journey from current age to retirement |
+| VitalHealth Plan Features | Integrated VitalHealth product education and illustration |
+| Singapore Milestones | CPF withdrawal ages, retirement thresholds, MediShield, insurance limits |
+| Coverage Gap Detection | Identifies insurance gaps by age band |
+| Dark Mode | Full dark mode support via design tokens |
+| Responsive Design | Mobile-first layout for use in client meetings |
+| Shareable Output | Printable/shareable timeline for clients |
 
-## 5. Functional Requirements
-
-| ID | Requirement |
-|----|------------|
-| FR-01 | Age-based financial timeline visualization |
-| FR-02 | Singapore milestone markers (CPF ages 55/65, retirement 62/65, MediShield) |
-| FR-03 | Insurance coverage gap detection by age band |
-| FR-04 | Input form for client demographics and financial basics |
-| FR-05 | Shareable/printable timeline output |
-
-## 6. Non-Goals
-
-- Detailed financial planning or projections (handled by BeeHive Finance Hub)
-- Product recommendations (handled by AIA Product Compass Hub)
-- Commission calculations
-
-## 7. Technical Considerations
+## 5. Technical Architecture
 
 | Aspect | Detail |
 |--------|--------|
 | Stack | React + TypeScript + Vite + Tailwind + shadcn/ui |
 | Backend | Supabase |
+| Dark Mode | Tailwind dark mode with design tokens |
 | Deployment | Vercel |
+
+## 6. Contributors
+
+| Contributor | Commits | Role |
+|------------|---------|------|
+| `lovable-dev[bot]` | ~7,798 | Primary AI builder |
+| `leotansingapore` | 7 | Owner, product direction |
+| `j-casimiro` | 7 | Developer |
+| `joshua0006` | 3 | Developer |
+| `Jehu-RND` | 1 | Contributor |
+| `jiliangarette` | 1 | Contributor |
+| Total | 7,817 | |
+
+## 7. Non-Goals
+
+- Detailed financial planning or projections (handled by BeeHive Finance Hub)
+- Product recommendations beyond VitalHealth (handled by AIA Product Compass Hub)
+- Commission calculations
 
 ## 8. Success Metrics
 
@@ -60,15 +68,19 @@ Growing Age Calculator is an age-based financial planning calculator that helps 
 | Advisor usage in client meetings | 50%+ |
 | Client comprehension rating | 4/5 or higher |
 | Timeline generation time | Under 3 seconds |
+| VitalHealth feature clarity score | 4/5 or higher |
 
 ## 9. Current Status
 
 | Feature | Status |
 |---------|--------|
-| Age-based timeline | MVP |
-| Singapore milestones | MVP |
-| Coverage gap detection | Planned |
-| Shareable output | Planned |
+| Age-based timeline | Production |
+| VitalHealth plan features | Production |
+| Singapore milestones | Production |
+| Coverage gap detection | Production |
+| Dark mode | Production |
+| Responsive design | Production |
+| Shareable output | Production |
 
 ## 10. Open Questions
 
