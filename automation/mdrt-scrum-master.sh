@@ -138,6 +138,79 @@ Keep the entire agenda under 80 lines. Be direct, no fluff. Use bullet points. F
 
 log "Agenda generated (${#AGENDA} chars)"
 
+# ── 3b. Detect blockers and append to Google Sheet Blockers tab ────
+log "Scanning for blockers"
+SHEET_ID=$(cat "$HOME/.local/share/mdrt-meeting/sheet_id.txt" 2>/dev/null || echo "")
+if [[ -n "$SHEET_ID" ]]; then
+  /usr/bin/python3 << PYEOF 2>> "$LOG_FILE" || true
+import os, sys, warnings, re
+warnings.filterwarnings("ignore")
+sys.path.insert(0, os.path.expanduser("~/Documents/New project/tools"))
+from datetime import datetime
+try:
+    from lib.sheets import get_sheets_client
+except Exception as e:
+    print(f"Blockers: lib.sheets import failed: {e}")
+    sys.exit(0)
+
+SHEET_ID = "$SHEET_ID"
+CONTEXT_PATH = "$TMPDIR_REPORT/context.txt"
+AGENDA = r"""$AGENDA"""
+now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+blockers = []
+
+# 1. Stale repos (from context.txt)
+try:
+    ctx = open(CONTEXT_PATH).read()
+    current_repo = None
+    for line in ctx.splitlines():
+        m = re.match(r"--- REPO: (\S+)", line)
+        if m:
+            current_repo = m.group(1)
+        if "STALE:" in line and current_repo:
+            blockers.append([now, current_repo, "Scrum Master", "MEDIUM",
+                             line.strip().strip("*").strip(), "",
+                             "Discuss at standup or deprioritize", "No"])
+except Exception as e:
+    print(f"Blockers: context parse failed: {e}")
+
+# 2. 'Open Blockers' section of the agenda
+if "Open Blockers" in AGENDA:
+    tail = AGENDA.split("Open Blockers", 1)[1]
+    for line in tail.splitlines():
+        s = line.strip().lstrip("-*").strip()
+        if not s or len(s) < 10:
+            continue
+        if s.startswith("**") or s.lower().startswith("outstanding"):
+            break
+        repo = ""
+        m = re.search(r"\[([a-z0-9-]+)\]", s)
+        if m: repo = m.group(1)
+        blockers.append([now, repo or "(multi)", "AI Agenda", "LOW",
+                         s[:400], "", "Raise at weekly scrum", "No"])
+
+if not blockers:
+    print("Blockers: none detected")
+    sys.exit(0)
+
+try:
+    gc = get_sheets_client()
+    ss = gc.open_by_key(SHEET_ID)
+    try:
+        ws = ss.worksheet("Blockers")
+    except Exception:
+        ws = ss.add_worksheet(title="Blockers", rows=500, cols=8)
+        ws.append_row(["Date","Repo","Source","Severity","Blocker","Issue/PR","Action Needed","Resolved"])
+    for row in blockers:
+        ws.append_row(row)
+    print(f"Blockers: appended {len(blockers)} row(s)")
+except Exception as e:
+    print(f"Blockers append failed: {e}")
+PYEOF
+fi
+
+
 # ── 4. Update Google Sheet ─────────────────────────────────────────
 log "Updating Google Sheet"
 SHEET_URL=$(cd "$HOME/Documents/New project" && python3 "$HOME/.local/bin/mdrt-meeting-sheet.py" 2>/dev/null || echo "")
