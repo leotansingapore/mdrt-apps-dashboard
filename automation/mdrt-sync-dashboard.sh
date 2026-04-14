@@ -4,7 +4,7 @@ set -euo pipefail
 
 DASHBOARD_DIR="$HOME/.local/share/mdrt-meeting/dashboard-repo"
 LOG_FILE="$HOME/.local/log/mdrt-meeting.log"
-ENV_FILE="$HOME/Documents/New project/.env"
+ENV_FILE="$HOME/.config/agents.env"; [[ -r "$ENV_FILE" ]] || ENV_FILE="$HOME/Documents/New project/.env"
 DASHBOARD_URL="https://leotansingapore.github.io/mdrt-apps-dashboard/"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] [sync] $1" >> "$LOG_FILE"; }

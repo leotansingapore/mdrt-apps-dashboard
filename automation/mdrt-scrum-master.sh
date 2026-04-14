@@ -14,7 +14,7 @@ REPOS=(
   "leotansingapore/loyalty-link-access"
 )
 
-ENV_FILE="$HOME/Documents/New project/.env"
+ENV_FILE="$HOME/.config/agents.env"; [[ -r "$ENV_FILE" ]] || ENV_FILE="$HOME/Documents/New project/.env"
 STATE_FILE="$HOME/.local/share/mdrt-meeting/state.json"
 LOG_FILE="$HOME/.local/log/mdrt-meeting.log"
 TODAY=$(date '+%Y-%m-%d')
@@ -281,5 +281,13 @@ log "Agenda sent successfully ($TOTAL_COMMITS commits across ${#REPOS[@]} repos)
 
 # ── 6. Sync dashboard repo ─────────────────────────────────────────
 "$HOME/.local/bin/mdrt-sync-dashboard.sh" 2>> "$LOG_FILE" || log "Dashboard sync failed (non-fatal)"
+
+/usr/bin/python3 -c "
+import sys, os, warnings
+warnings.filterwarnings('ignore')
+sys.path.insert(0, os.path.expanduser('~/Documents/New project/tools'))
+from lib.heartbeat import beat
+beat('mdrt-scrum-master', {'commits': $TOTAL_COMMITS})
+" 2>> "$LOG_FILE" || true
 
 echo "MDRT scrum master agenda sent: $TODAY"

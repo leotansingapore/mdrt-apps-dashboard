@@ -2,7 +2,7 @@
 # MDRT Team Apps Meeting Reminder -- Tuesday 4:00 PM SGT -> Lark
 set -euo pipefail
 
-ENV_FILE="$HOME/Documents/New project/.env"
+ENV_FILE="$HOME/.config/agents.env"; [[ -r "$ENV_FILE" ]] || ENV_FILE="$HOME/Documents/New project/.env"
 LOG_FILE="$HOME/.local/log/mdrt-meeting.log"
 STATE_FILE="$HOME/.local/share/mdrt-meeting/state.json"
 TODAY=$(date '+%Y-%m-%d')
@@ -75,4 +75,13 @@ PAYLOAD
 )" > /dev/null 2>&1
 
 log "Reminder sent successfully"
+
+/usr/bin/python3 -c "
+import sys, os, warnings
+warnings.filterwarnings('ignore')
+sys.path.insert(0, os.path.expanduser('~/Documents/New project/tools'))
+from lib.heartbeat import beat
+beat('mdrt-meeting-reminder')
+" 2>/dev/null || true
+
 echo "MDRT meeting reminder sent: $TODAY"
