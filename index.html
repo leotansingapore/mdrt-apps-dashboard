@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MDRT Apps Dashboard</title>
+<style>
+:root{--bg:#0b0d12;--panel:#12151c;--panel-2:#171b24;--border:#232834;--text:#e6e8ee;--muted:#8a92a3;--accent:#6ea8ff;--accent-2:#7ae0b6}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:15px;line-height:1.55}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+h1{font-size:24px;margin:0}
+.sub{color:var(--muted);font-size:13px}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:32px 0 12px;font-weight:600}
+.grid{display:grid;gap:12px}.grid-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.grid-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.card h3{margin:0 0 4px;font-size:15px;font-weight:600}.card p{margin:0;color:var(--muted);font-size:13px}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:13px}
+.pill{background:var(--panel-2);border:1px solid var(--border);padding:4px 10px;border-radius:6px}.pill.muted{color:var(--muted)}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.quick a{display:block;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:var(--text)}
+.quick a .l{font-size:13px;color:var(--muted);display:block;margin-bottom:2px}
+.quick a:hover{border-color:var(--accent);text-decoration:none}
+footer{margin-top:48px;color:var(--muted);font-size:12px;text-align:center}
+.badge{display:inline-block;font-size:11px;background:var(--panel-2);border:1px solid var(--border);padding:2px 8px;border-radius:999px;color:var(--muted);margin-left:8px}
+</style></head><body><div class="wrap">
+<header><div><h1>MDRT Apps Dashboard <span class="badge">weekly meeting hub</span></h1>
+<div class="sub">9 financial advisory team apps -- PRDs, weekly scrum, meeting logs, automation.</div></div></header>
+<h2>Quick Links</h2>
+<div class="quick">
+<a href="https://meet.google.com/pjz-jeuo-iuk" target="_blank"><span class="l">Weekly sync</span>Google Meet &rarr;</a>
+<a href="https://docs.google.com/spreadsheets/d/1ZmbroGZKQYS1Wu-RWFxvOw0unzvah5Fs_DTApGGMODo" target="_blank"><span class="l">Tracking</span>Meeting Sheet &rarr;</a>
+<a href="prds/"><span class="l">Strategy</span>All PRDs &rarr;</a>
+<a href="swarm-reports/"><span class="l">Weekly</span>Swarm Reports &rarr;</a>
+<a href="https://github.com/leotansingapore/mdrt-apps-dashboard"><span class="l">Source</span>GitHub repo &rarr;</a>
+</div>
+<h2>The 9 Apps</h2>
+<div class="grid grid-2">
+  <div class="card">
+    <h3>Quick Schedule Pal</h3>
+    <p>Meeting scheduler for advisors.</p>
+    <div class="links">
+      <a class="pill" href="prds/quick-schedule-pal/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/quick-schedule-pal">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Growing Age Calculator</h3>
+    <p>Life insurance age calculator tool.</p>
+    <div class="links">
+      <a class="pill" href="prds/growing-age-calculator/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/growing-age-calculator">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Agency Launchpad 90</h3>
+    <p>90-day agency onboarding playbook.</p>
+    <div class="links">
+      <a class="pill" href="prds/agency-launchpad-90/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/agency-launchpad-90">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>AIA Product Compass Hub</h3>
+    <p>AIA product navigator for advisors.</p>
+    <div class="links">
+      <a class="pill" href="prds/aia-product-compass-hub/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/aia-product-compass-hub">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Tracker Attendance</h3>
+    <p>Event and session attendance tracker.</p>
+    <div class="links">
+      <a class="pill" href="prds/trackerattendance/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/trackerattendance">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Activity Tracker</h3>
+    <p>Daily activity + KPI tracker.</p>
+    <div class="links">
+      <a class="pill" href="prds/remix-of-activity-tracker/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/remix-of-activity-tracker">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Agent Rank Dash</h3>
+    <p>Agent performance leaderboard.</p>
+    <div class="links">
+      <a class="pill" href="prds/agent-rank-dash/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/agent-rank-dash">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Bee Hive Finance Hub</h3>
+    <p>Team finance + commission portal.</p>
+    <div class="links">
+      <a class="pill" href="prds/bee-hive-finance-hub/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/bee-hive-finance-hub">Repo</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Loyalty Link Access</h3>
+    <p>Client loyalty + referral portal.</p>
+    <div class="links">
+      <a class="pill" href="prds/loyalty-link-access/PRD.md">PRD</a>
+      <a class="pill" href="https://github.com/leotansingapore/loyalty-link-access">Repo</a>
+    </div>
+  </div></div>
+<h2>Recent Meetings</h2>
+<div class="grid grid-2"><div class="card"><h3><a href="swarm-reports/2026-04-08.md">2026-04-08</a></h3><p>Weekly Swarm Report -- 2026-04-08</p></div></div>
+<h2>Weekly Automation</h2>
+<div class="grid grid-3">
+<div class="card"><h3>Tue 16:30 reminder</h3><p>Pre-meeting ping with last week's action items.</p></div>
+<div class="card"><h3>Tue 17:00 agenda</h3><p>Scrum master: 7-day GitHub activity summary across 9 repos.</p></div>
+<div class="card"><h3>Tue post-meeting log</h3><p>Fireflies transcript &rarr; sheet Meeting Log tab + swarm-reports/*.md.</p></div>
+<div class="card"><h3>Sun 20:00 swarm</h3><p>Cross-repo weekly swarm scan, GitHub issues, Lark report.</p></div>
+</div>
+<p class="sub" style="margin-top:10px">Scripts in <a href="automation/">automation/</a>, scheduled via launchd.</p>
+<footer>Auto-generated 2026-04-14 02:02 UTC &middot; <a href="https://github.com/leotansingapore/mdrt-apps-dashboard">leotansingapore/mdrt-apps-dashboard</a></footer>
+</div></body></html>
