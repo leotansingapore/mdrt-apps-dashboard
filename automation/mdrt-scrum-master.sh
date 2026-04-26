@@ -1,6 +1,8 @@
-#!/bin/zsh
+#!/bin/bash
 # MDRT Team Apps Scrum Master -- Tuesday 4:30 PM SGT -> Lark
 set -euo pipefail
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 REPOS=(
   "leotansingapore/quick-schedule-pal"
