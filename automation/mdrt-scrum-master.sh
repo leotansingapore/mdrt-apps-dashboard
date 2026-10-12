@@ -136,7 +136,13 @@ Suggest 3-5 discussion topics based on patterns in the activity.
 **Proposed Focus This Week**
 For each active app, suggest 1-2 priorities based on current momentum and open issues.
 
-Keep the entire agenda under 80 lines. Be direct, no fluff. Use bullet points. Format for Lark markdown.")
+Keep the entire agenda under 80 lines. Be direct, no fluff. Use bullet points. Format for Lark markdown.") || {
+  # Pre-meeting, so a rerun is useless: under set -e a limit used to kill the agenda, sheet and heartbeat. Same fallback as seo-agency-scrum-master.
+  log "WARNING: Claude CLI failed, using raw context as fallback"
+  AGENDA="**Claude CLI unavailable -- raw repo data:**
+
+$(cat "$TMPDIR_REPORT/context.txt")"
+}
 
 log "Agenda generated (${#AGENDA} chars)"
 
