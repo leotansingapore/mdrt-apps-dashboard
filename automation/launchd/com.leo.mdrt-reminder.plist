@@ -15,7 +15,9 @@
 	<string>Background</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/leo/.local/bin/mdrt-meeting-reminder.sh</string>
+		<string>/bin/bash</string>
+		<string>-c</string>
+		<string>/Users/leo/.local/bin/mdrt-meeting-reminder.sh; exit $?</string>
 	</array>
 	<key>RunAtLoad</key>
 	<false/>

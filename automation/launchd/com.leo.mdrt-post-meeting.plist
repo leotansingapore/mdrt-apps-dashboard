@@ -15,7 +15,9 @@
 	<string>Background</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/leo/.local/bin/mdrt-post-meeting.sh</string>
+		<string>/bin/bash</string>
+		<string>-c</string>
+		<string>/Users/leo/.local/bin/mdrt-post-meeting.sh; exit $?</string>
 	</array>
 	<key>StandardErrorPath</key>
 	<string>/Users/leo/.local/log/mdrt-meeting.log</string>
